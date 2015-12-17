@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+
+<h:head>
+</h:head>
+<h:body>
+
+<h:form id="newBook">
+    <p:panel id="panel" header="New Book">
+ 
+      <p:messages id="msgs" showDetail="true" autoUpdate="true" closable="true" />
+ 
+        <h:panelGrid columns="3" cellpadding="5">
+        
+            <p:outputLabel for="isbn" value="ISBN: " />
+            <p:inputText id="isbn" value="#{bookBean.isbn}" required="true" label="ISBN">
+                <f:validateLength minimum="2" />
+            </p:inputText>
+            <p:message for="isbn" display="icon" />
+ 
+            <p:outputLabel for="title" value="Title: " />
+            <p:inputText id="title" value="#{bookBean.title}" label="Title" required="true">
+                <f:validateLength minimum="2" />
+                <p:ajax update="msgTitle" event="keyup" />
+            </p:inputText>
+            <p:message for="title" id="msgTitle" display="icon" />
+            
+            <p:outputLabel for="author" value="Author: " />
+            <p:inputText id="author" value="#{bookBean.author}" required="true" label="Author">
+                <f:validateLength minimum="2" />
+            </p:inputText>
+            <p:message for="author" display="icon" />
+            
+            <p:outputLabel for="year" value="Year: " />
+            <p:inputText id="year" value="#{bookBean.year}" required="true" label="Year">
+                <f:validateLength minimum="4" />
+            </p:inputText>
+            <p:message for="year" display="icon" />
+            
+ 
+        </h:panelGrid>
+ 
+        <p:commandButton id="btn_registry" resetValues="true" value="Save" update="panel" actionListener="#{bookController.save(bookBean)}" icon="ui-icon-check" />
+        <p:message for="btn_registry" display="icon" />
+    </p:panel>
+</h:form>
+</h:body>
+</html>
