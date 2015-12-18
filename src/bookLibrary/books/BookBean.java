@@ -11,6 +11,9 @@ public class BookBean {
 	private String title;
 	private String author;
 	private short year;
+	
+	
+	
 	public String getIsbn() {
 		return isbn;
 	}
@@ -35,6 +38,7 @@ public class BookBean {
 	public void setYear(short year) {
 		this.year = year;
 	}
+	
 	
 	
 	

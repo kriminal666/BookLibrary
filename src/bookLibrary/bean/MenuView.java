@@ -4,7 +4,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
-@ManagedBean
+@ManagedBean(name="menuView")
 public class MenuView {
 	
 	private static final String LOGIN_PAGE = "login";

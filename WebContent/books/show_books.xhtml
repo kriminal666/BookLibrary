@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	
+	
+	<h:head>
+	 
+	</h:head>
+	<h:body>
+	 <h2>Book Store</h2>
+	 <h:form>
+	     <p:dataTable id="checkboxDT" var="book" value="#{bookController.bookList}" selection="#{bookController.selectedBooks}"
+	      rowKey="#{book.isbn}" style="margin-bottom:0" reflow="true" rows="10" paginator="true">
+        <f:facet name="header">
+            Books List
+        </f:facet>
+        <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
+        <p:column headerText="ISBN" sortBy="#{book.isbn}">
+            <h:outputText value="#{book.isbn}" />
+        </p:column>
+        <p:column headerText="TITLE" sortBy="#{book.title}">
+            <h:outputText value="#{book.title}" />
+        </p:column>
+        <p:column headerText="AUTHOR" sortBy="#{book.author}">
+            <h:outputText value="#{book.author}" />
+        </p:column>
+        <p:column headerText="YEAR" sortBy="#{book.year}">
+            <h:outputText value="#{book.year}" />
+        </p:column>
+        <f:facet name="footer">
+            <p:commandButton process="checkboxDT" update="" icon="ui-icon-search" value="View" oncomplete="" />
+        </f:facet>
+    </p:dataTable>
+    
+    </h:form>
+	
+	
+</h:body>
+</html>

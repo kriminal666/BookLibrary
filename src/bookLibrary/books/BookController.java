@@ -2,10 +2,13 @@ package bookLibrary.books;
 
 
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 
 import org.hibernate.HibernateException;
-import org.primefaces.context.RequestContext;
 
 import bookLibrary.constants.Constants;
 import bookLibrary.entities.Book;
@@ -14,12 +17,22 @@ import bookLibrary.utils.Utils;
 
 @ManagedBean (name="bookController")
 
-public class BookController {
+public class BookController implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private static Book book;
 	
-	private final ModelDAO <Book> bookDAO = new ModelDAO<Book>(Book.class);
+	private static final ModelDAO <Book> bookDAO = new ModelDAO<Book>(Book.class);
 	
+	private List <Book> bookList = new ArrayList<Book>();
+	
+	private List <Book> selectedBooks = new ArrayList<Book>();
+	
+     
 
 	/**
 	 * set BookBean to Book
@@ -63,6 +76,71 @@ public class BookController {
 		}
 		
 	}
+	
+	/**
+	 * Set Book list to BookBean
+	 * 
+	 * @return
+	 */
+	private List<BookBean> setBookBean(){
+		
+		List <BookBean> bookBeanList= new ArrayList<BookBean>();
+		
+		for(Book book : getBookList()){
+			
+			BookBean bookBean = new BookBean();
+			bookBean.setIsbn(book.getIsbn());
+			bookBean.setAuthor(book.getAuthor());
+			bookBean.setTitle(book.getTitle());
+			bookBean.setYear(book.getYear());
+			bookBeanList.add(bookBean);				
+		}
+		
+		return bookBeanList;
+	}
+	
+	
+	/**
+	 * Get the books list from database
+	 * 
+	 * @return
+	 */
+	private void  getAllBooks(){
+		
+		//Get books from database
+		try{
+			bookList = bookDAO.getObjects();
+			
+		}catch(HibernateException he){
+			
+			//send message
+			Utils.messageMaker(Constants.RETRIVE_ALL,Constants.SUCCESS_FALSE,he.getCause().getMessage());	
+			
+		}
+		
+		
+		
+	}
+
+	/**
+	 * Get book list of view
+	 * 
+	 * @return
+	 */
+	public List <Book> getBookList() {
+		getAllBooks();
+		return bookList;
+	}
+
+	public List <Book> getSelectedBooks() {
+		return selectedBooks;
+	}
+
+	public void setSelectedBooks(List <Book> selectedBooks) {
+		this.selectedBooks = selectedBooks;
+		
+	}
+
 	
 	
 	

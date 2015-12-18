@@ -10,6 +10,12 @@
 	</h:head>
 	<h:body>
 	 <h2>Login</h2>
+	 <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+	 <p:dialog widgetVar="statusDialog" modal="false" draggable="false" closable="false" resizable="false" showHeader="false">
+	    <p:graphicImage name="banana.GIF"  library="img" />
+	   
+	</p:dialog>
+	
 	 <h:form id="loginUser">
 	  <p:panel id="panel" header="Login">
        <p:messages id="msgs" showDetail="true" autoUpdate="true" closable="true" />

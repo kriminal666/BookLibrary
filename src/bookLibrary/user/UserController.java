@@ -25,6 +25,7 @@ public class UserController {
 	private User user;
 	private final ModelDAO <User> userDAO = new ModelDAO<User>(User.class);
 	private String [] msg = new String[2];
+	private static final String BOOKS_LIST = "bookList";
 	
     /**
      * Set new User entity.
@@ -143,7 +144,7 @@ public class UserController {
 		
 		Utils.messageMaker(Constants.GENERIC_SUCCESS, Constants.SUCCESS_TRUE, msg);
 		
-		return "books/new_book.xhtml";
+		return BOOKS_LIST;
 		
 		
 	}

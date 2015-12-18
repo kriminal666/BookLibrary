@@ -143,16 +143,21 @@ public T getUserLogin(String email) throws HibernateException {
  * Get all objects
  * 
  * @return
- * @throws HibernateException
+ * 
  */
-public List<T> getObjects() throws HibernateException{
+public List<T> getObjects() {
         List<T> list = null;
  
         try{
             initOperation();
             list = session.createQuery("from "+typeParameterClass.getSimpleName()).list();
+            
+        } catch (HibernateException he){
+            workException(he);
+             throw he; 
         } finally{
             session.close();
+            
         }
  
     return list;
@@ -170,6 +175,6 @@ private void initOperation() throws HibernateException{
  
 private void workException(HibernateException he) throws HibernateException{
         tx.rollback();
-        throw he;
+        //throw he;
 }
 }

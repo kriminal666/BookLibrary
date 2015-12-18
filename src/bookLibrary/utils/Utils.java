@@ -137,6 +137,10 @@ public final class Utils {
 					break;
 				case Constants.RETRIVE_ALL :
 					
+					FacesContext.getCurrentInstance().addMessage(null,
+			                new FacesMessage(FacesMessage.SEVERITY_ERROR, "Retrive error! ", msg[0]));
+					
+					
 					break;
 				case Constants.GENERIC_SUCCESS :
 					

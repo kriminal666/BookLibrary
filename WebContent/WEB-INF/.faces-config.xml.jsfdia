@@ -10,5 +10,14 @@
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#users#login.xhtml" PATH="/users/login.xhtml"
-  SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
+  SHAPE="240,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#users#login.xhtml:0" NAME="item"
+   PATH="/users/login.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="bookList::#books#show_books.xhtml"
+    NAME="output" PATH="/books/show_books.xhtml"
+    TARGET="rules:#books#show_books.xhtml" TITLE="bookList" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#books#show_books.xhtml"
+  PATH="/books/show_books.xhtml" SHAPE="448,17,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>
