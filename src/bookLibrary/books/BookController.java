@@ -128,7 +128,10 @@ public class BookController implements Serializable{
 	 * @return
 	 */
 	public List <Book> getBookList() {
-		getAllBooks();
+		
+		if (bookList.size() == 0){
+			getAllBooks();
+		}	
 		return bookList;
 	}
 

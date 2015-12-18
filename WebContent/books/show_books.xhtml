@@ -34,9 +34,7 @@
         <p:column headerText="YEAR" sortBy="#{book.year}">
             <h:outputText value="#{book.year}" />
         </p:column>
-        <f:facet name="footer">
-            <p:commandButton process="checkboxDT" update="" icon="ui-icon-search" value="View" oncomplete="" />
-        </f:facet>
+        
     </p:dataTable>
     
     </h:form>
